@@ -1,0 +1,20 @@
+Come usare i file:
+1. Importa i servizi:
+javascriptimport { ApiService, UserService, ProductService } from './path/to/your/files';
+
+2. Usa gli hooks:
+javascriptimport { useApi, useFetch } from './hooks/useApi'
+
+3. Wrap la tua app con il Provider:
+javascriptimport { ApiProvider } from './context/ApiContext';
+
+function App() {
+  return (
+    <ApiProvider>
+      {/* I tuoi componenti */}
+    </ApiProvider>
+  );
+}
+
+4. Usa i componenti:
+javascriptimport { CardList, DynamicForm, DynamicCard } from './components';
