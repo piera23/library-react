@@ -1,70 +1,271 @@
-# Getting Started with Create React App
+# Library React - Bootstrap Italia Components
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Una libreria completa di componenti React basati su Bootstrap Italia, con sistema di gestione API integrato e componenti dinamici.
 
-## Available Scripts
+## Descrizione
 
-In the project directory, you can run:
+Questo progetto fornisce una collezione riutilizzabile di componenti React per la creazione di applicazioni web moderne, seguendo le linee guida del design system italiano Bootstrap Italia.
 
-### `npm start`
+### Caratteristiche principali
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Componenti UI Bootstrap Italia**: Accordion, Alert, Badge, Button, Card, Form, Header, Footer, Hero, Modal, Tabs, e altro
+- **Componenti dinamici con API**: Gestione automatica di chiamate API, loading states e error handling
+- **Sistema di servizi**: Architettura service-based per interazioni con backend
+- **Hooks personalizzati**: `useApi` e `useFetch` per gestione chiamate asincrone
+- **Context API**: Provider globale per condivisione servizi
+- **Page Builder Concept**: Sistema proof-of-concept per costruzione pagine dinamiche
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Struttura del progetto
 
-### `npm test`
+```
+library-react/
+├── public/
+│   ├── bootstrap-italia/        # Asset statici Bootstrap Italia (CSS, JS, fonts)
+│   └── index.html               # Template HTML principale
+├── src/
+│   ├── components/              # Componenti UI Bootstrap Italia
+│   │   ├── accordion.jsx
+│   │   ├── alert.jsx
+│   │   ├── button.jsx
+│   │   ├── card.jsx
+│   │   ├── header.jsx
+│   │   ├── footer.jsx
+│   │   ├── modal.jsx
+│   │   └── exampleTemplate.jsx  # Template di esempio completo
+│   ├── componentsAPI/           # Componenti con integrazione API
+│   │   ├── components/          # DynamicCard, DynamicForm, DynamicTable, DynamicDashboard
+│   │   ├── services/            # ApiService, UserService, ProductService
+│   │   ├── hooks/               # useApi, useFetch
+│   │   ├── context/             # ApiContext, ApiProvider
+│   │   └── README_API.md        # Documentazione dettagliata API
+│   ├── pages/
+│   │   └── PageBuilderConcept.jsx  # Proof of concept page builder
+│   ├── App.js                   # Componente principale
+│   └── index.js                 # Entry point
+└── package.json
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installazione
 
-### `npm run build`
+1. **Clona il repository**
+   ```bash
+   git clone <repository-url>
+   cd library-react
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Installa le dipendenze**
+   ```bash
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Configura le variabili d'ambiente** (opzionale)
+   ```bash
+   cp .env.example .env
+   # Modifica .env con le tue configurazioni
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Comandi disponibili
 
-### `npm run eject`
+### Sviluppo
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm start
+```
+Avvia l'app in modalità sviluppo su [http://localhost:3000](http://localhost:3000).
+La pagina si ricarica automaticamente quando modifichi il codice.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Build di produzione
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm run build
+```
+Crea una build ottimizzata per la produzione nella cartella `build/`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Test
 
-## Learn More
+```bash
+npm test
+```
+Avvia il test runner in modalità interattiva.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Linting
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm run lint        # Verifica il codice
+npm run lint:fix    # Corregge automaticamente i problemi
+```
 
-### Code Splitting
+## Utilizzo dei componenti
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Componenti UI Bootstrap Italia
 
-### Analyzing the Bundle Size
+Esempio di utilizzo dei componenti base:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```jsx
+import { Button, Card, Alert, Modal } from './components';
 
-### Making a Progressive Web App
+function MyComponent() {
+  return (
+    <div>
+      <Alert message="Benvenuto!" type="success" />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+      <Card
+        title="Titolo Card"
+        text="Contenuto della card"
+        category="Categoria"
+        readMoreLink="/dettaglio"
+      />
 
-### Advanced Configuration
+      <Button
+        text="Clicca qui"
+        variant="primary"
+        icon="it-check"
+        onClick={() => console.log('clicked')}
+      />
+    </div>
+  );
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Per un esempio completo, consulta `src/components/exampleTemplate.jsx`.
 
-### Deployment
+### Componenti con API
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+I componenti API gestiscono automaticamente chiamate HTTP, loading states e errori:
 
-### `npm run build` fails to minify
+```jsx
+import { DynamicCard, CardList, DynamicForm } from './componentsAPI';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+// Carica e visualizza un singolo elemento
+<DynamicCard
+  apiEndpoint="/users"
+  itemId="123"
+  renderCard={(user) => <div>{user.name}</div>}
+/>
+
+// Lista con paginazione automatica
+<CardList
+  apiEndpoint="/products"
+  filters={{ category: 'electronics' }}
+  renderCard={(product) => <ProductCard {...product} />}
+/>
+
+// Form dinamico con validazione
+<DynamicForm
+  fields={[
+    { name: 'email', type: 'email', required: true },
+    { name: 'name', type: 'text', label: 'Nome completo' }
+  ]}
+  apiEndpoint="/users"
+  onSuccess={(result) => console.log('Creato!', result)}
+/>
+```
+
+### Hooks personalizzati
+
+```jsx
+import { useApi, useFetch } from './componentsAPI/hooks/useApi';
+
+// Per chiamate manuali
+function CreateUser() {
+  const { data, loading, error, execute } = useApi(
+    () => userService.createUser(formData)
+  );
+
+  return (
+    <button onClick={execute} disabled={loading}>
+      {loading ? 'Creazione...' : 'Crea Utente'}
+    </button>
+  );
+}
+
+// Per caricamento automatico
+function UserList() {
+  const { data, loading, error, refetch } = useFetch(
+    () => userService.getUsers()
+  );
+
+  if (loading) return <div>Caricamento...</div>;
+  if (error) return <div>Errore: {error.message}</div>;
+
+  return data.map(user => <div key={user.id}>{user.name}</div>);
+}
+```
+
+### Context API
+
+Avvolgi la tua app con `ApiProvider` per accesso globale ai servizi:
+
+```jsx
+import { ApiProvider, useApiServices } from './componentsAPI/context/ApiContext';
+
+// In App.js
+function App() {
+  return (
+    <ApiProvider>
+      <MyComponent />
+    </ApiProvider>
+  );
+}
+
+// In qualsiasi componente figlio
+function MyComponent() {
+  const { userService, productService } = useApiServices();
+
+  const loadUsers = async () => {
+    const users = await userService.getUsers();
+    console.log(users);
+  };
+
+  return <button onClick={loadUsers}>Carica Utenti</button>;
+}
+```
+
+## Documentazione
+
+- **Componenti API**: Consulta `src/componentsAPI/README_API.md` per documentazione dettagliata
+- **Bootstrap Italia**: [Documentazione ufficiale](https://italia.github.io/bootstrap-italia/)
+- **Create React App**: [Documentazione CRA](https://create-react-app.dev/)
+
+## Tecnologie utilizzate
+
+- **React 19.1.0**: Framework UI
+- **Bootstrap Italia 2.14.0**: Design system
+- **React Testing Library**: Testing
+- **Create React App**: Build toolchain
+
+## Configurazione API
+
+Per configurare le API, modifica il file `.env`:
+
+```env
+REACT_APP_API_BASE_URL=https://your-api.com/api
+REACT_APP_API_TIMEOUT=10000
+```
+
+I servizi in `src/componentsAPI/services/` utilizzano automaticamente queste configurazioni.
+
+## Contribuire
+
+1. Fork del progetto
+2. Crea un branch per la tua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit delle modifiche (`git commit -m 'Add some AmazingFeature'`)
+4. Push al branch (`git push origin feature/AmazingFeature`)
+5. Apri una Pull Request
+
+## Note di sicurezza
+
+Il progetto presenta alcune dipendenze con vulnerabilità note (principalmente in `react-scripts`).
+Per ambienti di produzione, considera:
+
+- Aggiornamento a versioni più recenti di `react-scripts` o migrazione a Vite
+- Revisione delle dipendenze con `npm audit`
+- Implementazione di Content Security Policy (CSP)
+
+## Licenza
+
+Questo progetto è stato creato a scopo educativo e dimostrativo.
+
+## Supporto
+
+Per domande o problemi, apri una issue nel repository.
